@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>حاسبة التمويل العقاري</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap');
+        
+        body {
+            font-family: 'Cairo', sans-serif;
+        }
+
+        .gradient-bg {
+            background: linear-gradient(135deg, #f0fdfa 0%, #f1f5f9 100%);
+        }
+
+        .card-shadow {
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+
+        .action-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .input-field:focus {
+            border-color: #0d9488; /* Teal-600 */
+            box-shadow: 0 0 0 3px rgba(13, 148, 136, 0.1);
+        }
+    </style>
+</head>
+<body class="gradient-bg min-h-screen p-6">
+    <div class="max-w-6xl mx-auto">
+        <!-- Header -->
+        <div class="text-center mb-8">
+            <div class="flex items-center justify-center mb-2">
+                <!-- SVG Logo for Mortgage Calculator -->
+                <svg class="h-16 w-auto text-teal-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 21v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21m0 0h4.5V3.545M12.75 21h7.5V10.75M2.25 21h1.5m18 0h-18M2.25 9l4.5-1.636M18.75 3l-1.5.545m0 6.205l3 1m-3-1l-1.5.545m0 0l-2.25 1.125m18 0l-2.25-1.125m0 0l-2.25 1.125m0 0l-2.25 1.125M12 12.75a3 3 0 100-6 3 3 0 000 6z" />
+                </svg>
+            </div>
+            <p class="text-gray-600 text-lg mb-2">صفحة أستاذ علي الهلال لـ</p>
+            <div class="flex items-center justify-center mb-4">
+                <svg class="text-teal-600 ml-3" width="40" height="40" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>
+                </svg>
+                <h1 class="text-4xl font-bold text-gray-800">حاسبة التمويل العقاري</h1>
+            </div>
+            <p class="text-gray-600 text-lg">احسب قيمة القسط الشهري والفوائد بطريقة مبسطة ودقيقة</p>
+            
+            <!-- Linktree Button -->
+            <div class="mt-4">
+                <a 
+                    href="https://linktr.ee/aliabdullahalhelal" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    class="action-btn inline-flex items-center px-6 py-3 bg-gray-800 text-white rounded-full hover:bg-gray-900 transition-all duration-200 shadow-lg"
+                >
+                    <!-- Link Icon -->
+                    <svg class="w-5 h-5 ml-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244" />
+                    </svg>
+                    <span class="text-sm font-medium">حساباتي على شبكة الانترنت العالمية</span>
+                    <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
+
+        <div class="grid lg:grid-cols-2 gap-8">
+            <!-- Input Section -->
+            <div class="bg-white rounded-2xl card-shadow p-8">
+                <div class="flex items-center mb-6">
+                    <svg class="text-teal-600 ml-3" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/>
+                    </svg>
+                    <h2 class="text-2xl font-bold text-gray-800">بيانات التمويل</h2>
+                </div>
+
+                <div class="space-y-6">
+                    <!-- Loan Amount -->
+                    <div>
+                        <label class="block text-sm font-semibold text-gray-700 mb-2">
+                            مبلغ التمويل (ريال سعودي)
+                        </label>
+                        <div class="relative">
+                            <input
+                                type="number"
+                                id="loanAmount"
+                                value="500000"
+                                class="input-field w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:outline-none text-lg text-right transition-all"
+                                placeholder="500,000"
+                                oninput="calculateMortgage()"
+                            />
+                            <span class="absolute left-3 top-3 text-gray-400 font-sans text-lg">ر.س</span>
+                        </div>
+                        <div class="flex gap-2 mt-2">
+                            <button onclick="setLoanAmount(300000)" class="px-3 py-1 bg-teal-50 text-teal-700 rounded-md text-sm hover:bg-teal-100 transition-colors">300 ألف</button>
+                            <button onclick="setLoanAmount(500000)" class="px-3 py-1 bg-teal-50 text-teal-700 rounded-md text-sm hover:bg-teal-100 transition-colors">500 ألف</button>
+                            <button onclick="setLoanAmount(750000)" class="px-3 py-1 bg-teal-50 text-teal-700 rounded-md text-sm hover:bg-teal-100 transition-colors">750 ألف</button>
+                            <button onclick="setLoanAmount(1000000)" class="px-3 py-1 bg-teal-50 text-teal-700 rounded-md text-sm hover:bg-teal-100 transition-colors">مليون</button>
+                        </div>
+                    </div>
+
+                    <!-- Interest Rate -->
+                    <div>
+                        <label class="block text-sm font-semibold text-gray-700 mb-2">
+                            معدل الفائدة السنوي (%)
+                        </label>
+                        <div class="relative">
+                            <input
+                                type="number"
+                                step="0.1"
+                                id="annualRate"
+                                value="4.5"
+                                class="input-field w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:outline-none text-lg text-right transition-all"
+                                placeholder="4.5"
+                                oninput="calculateMortgage()"
+                            />
+                            <span class="absolute left-3 top-3 text-gray-400 font-sans text-lg">%</span>
+                        </div>
+                        <div class="flex gap-2 mt-2">
+                            <button onclick="setAnnualRate(3.5)" class="px-3 py-1 bg-teal-50 text-teal-700 rounded-md text-sm hover:bg-teal-100 transition-colors">3.5%</button>
+                            <button onclick="setAnnualRate(4.0)" class="px-3 py-1 bg-teal-50 text-teal-700 rounded-md text-sm hover:bg-teal-100 transition-colors">4.0%</button>
+                            <button onclick="setAnnualRate(4.5)" class="px-3 py-1 bg-teal-50 text-teal-700 rounded-md text-sm hover:bg-teal-100 transition-colors">4.5%</button>
+                            <button onclick="setAnnualRate(5.0)" class="px-3 py-1 bg-teal-50 text-teal-700 rounded-md text-sm hover:bg-teal-100 transition-colors">5.0%</button>
+                        </div>
+                    </div>
+
+                    <!-- Loan Term -->
+                    <div>
+                        <label class="block text-sm font-semibold text-gray-700 mb-2">
+                            مدة التمويل (سنة)
+                        </label>
+                        <div class="relative">
+                            <input
+                                type="number"
+                                id="loanTerm"
+                                value="25"
+                                class="input-field w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:outline-none text-lg text-right transition-all"
+                                placeholder="25"
+                                oninput="calculateMortgage()"
+                            />
+                             <svg class="absolute left-3 top-3 text-gray-400" width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M9 11H7v6h2v-6zm4 0h-2v6h2v-6zm4 0h-2v6h2v-6zm2-7h-1V2h-2v2H8V2H6v2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H5V9h14v11z"/>
+                            </svg>
+                        </div>
+                        <div class="flex gap-2 mt-2">
+                            <button onclick="setLoanTerm(15)" class="px-3 py-1 bg-teal-50 text-teal-700 rounded-md text-sm hover:bg-teal-100 transition-colors">15 سنة</button>
+                            <button onclick="setLoanTerm(20)" class="px-3 py-1 bg-teal-50 text-teal-700 rounded-md text-sm hover:bg-teal-100 transition-colors">20 سنة</button>
+                            <button onclick="setLoanTerm(25)" class="px-3 py-1 bg-teal-50 text-teal-700 rounded-md text-sm hover:bg-teal-100 transition-colors">25 سنة</button>
+                            <button onclick="setLoanTerm(30)" class="px-3 py-1 bg-teal-50 text-teal-700 rounded-md text-sm hover:bg-teal-100 transition-colors">30 سنة</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Results Section -->
+            <div class="space-y-6">
+                <div class="bg-gradient-to-r from-teal-500 to-teal-600 rounded-2xl card-shadow p-8 text-white">
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="text-xl font-bold">القسط الشهري (المعادلة الدقيقة)</h3>
+                        <svg width="28" height="28" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/>
+                        </svg>
+                    </div>
+                    <div class="text-4xl font-bold mb-2" id="complexMonthlyPayment">2,770 ر.س</div>
+                    <p class="text-teal-100">معادلة الأقساط الثابتة (الأكثر استخداماً في البنوك)</p>
+                </div>
+                
+                <div class="grid grid-cols-2 gap-6">
+                    <div class="bg-gradient-to-r from-cyan-600 to-cyan-700 rounded-2xl card-shadow p-6 text-white">
+                        <h3 class="text-lg font-bold mb-3">إجمالي الفائدة</h3>
+                        <div class="text-2xl font-bold mb-1" id="totalInterestComplex">331,024 ر.س</div>
+                        <p class="text-cyan-100 text-sm">على مدى فترة التمويل</p>
+                    </div>
+                     <div class="bg-gradient-to-r from-sky-600 to-sky-700 rounded-2xl card-shadow p-6 text-white">
+                        <h3 class="text-lg font-bold mb-3">إجمالي المبلغ المدفوع</h3>
+                        <div class="text-2xl font-bold mb-1" id="totalAmountComplex">831,024 ر.س</div>
+                        <p class="text-sky-100 text-sm">التمويل + الفوائد</p>
+                    </div>
+                </div>
+
+                <!-- Simple Calculation Section -->
+                <div class="bg-gray-700 rounded-2xl p-6 text-white">
+                    <h3 class="text-lg font-bold mb-3">الحسبة المبسطة (للتقريب فقط)</h3>
+                    <div class="grid grid-cols-2 gap-4 text-center">
+                        <div>
+                            <p class="text-gray-300 text-sm">القسط الشهري</p>
+                            <p class="font-bold text-xl" id="monthlyPaymentSimple">3,542 ر.س</p>
+                        </div>
+                        <div>
+                            <p class="text-gray-300 text-sm">إجمالي الفائدة</p>
+                            <p class="font-bold text-xl" id="totalInterestSimple">562,500 ر.س</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Summary Table -->
+        <div class="mt-8 bg-white rounded-2xl card-shadow p-8">
+            <h3 class="text-2xl font-bold text-gray-800 mb-6 text-center">ملخص التمويل</h3>
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="text-center p-4 bg-gray-50 rounded-lg">
+                    <div class="text-sm text-gray-600 mb-1">مبلغ التمويل الأصلي</div>
+                    <div class="text-xl font-bold text-gray-800" id="summaryLoanAmount">500,000 ر.س</div>
+                </div>
+                <div class="text-center p-4 bg-gray-50 rounded-lg">
+                    <div class="text-sm text-gray-600 mb-1">معدل الفائدة السنوي</div>
+                    <div class="text-xl font-bold text-gray-800" id="summaryRate">4.5%</div>
+                </div>
+                <div class="text-center p-4 bg-gray-50 rounded-lg">
+                    <div class="text-sm text-gray-600 mb-1">مدة التمويل</div>
+                    <div class="text-xl font-bold text-gray-800" id="summaryTerm">25 سنة</div>
+                </div>
+                <div class="text-center p-4 bg-gray-50 rounded-lg">
+                    <div class="text-sm text-gray-600 mb-1">عدد الأقساط</div>
+                    <div class="text-xl font-bold text-gray-800" id="summaryPayments">300 قسط</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Formula Explanation -->
+        <div class="mt-8 bg-gradient-to-r from-teal-50 to-cyan-50 rounded-2xl p-8">
+            <h3 class="text-2xl font-bold text-gray-800 mb-4 text-center">شرح طريقة الحساب</h3>
+            <div class="grid md:grid-cols-2 gap-6 text-gray-700">
+                <div>
+                    <h4 class="font-bold mb-2 text-teal-800">القسط الشهري (المعادلة الدقيقة - PMT):</h4>
+                    <p class="text-sm mb-4 bg-teal-100 p-3 rounded">
+                        <strong>الصيغة:</strong> [مبلغ القرض × (الفائدة الشهرية × (1 + الفائدة الشهرية)^عدد الأشهر)] ÷ [(1 + الفائدة الشهرية)^عدد الأشهر - 1]<br/>
+                        هذه هي المعادلة المستخدمة من قبل البنوك لحساب الأقساط الثابتة.
+                    </p>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-2 text-gray-600">الحسبة المبسطة (غير دقيقة):</h4>
+                    <p class="text-sm mb-4 bg-gray-100 p-3 rounded">
+                        1. <strong>الفائدة الإجمالية:</strong> مبلغ القرض × النسبة السنوية × عدد السنوات<br/>
+                        2. <strong>المبلغ الإجمالي:</strong> مبلغ القرض + الفائدة الإجمالية<br/>
+                        3. <strong>القسط الشهري:</strong> المبلغ الإجمالي ÷ عدد الأشهر<br/>
+                        <span class="font-bold">ملاحظة:</span> هذه الطريقة لا تعكس التناقص في أصل الدين ولا تستخدمها البنوك.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Disclaimer -->
+        <div class="mt-6 text-center text-sm text-gray-500">
+            <p>هذه الحسابات تقريبية وللأغراض التوضيحية فقط. للحصول على عروض دقيقة يرجى مراجعة البنك.</p>
+        </div>
+    </div>
+
+    <script>
+        function formatNumber(num) {
+            return new Intl.NumberFormat('ar-SA', {
+                style: 'currency',
+                currency: 'SAR',
+                minimumFractionDigits: 0,
+                maximumFractionDigits: 0
+            }).format(num);
+        }
+
+        function calculateMortgage() {
+            const loanAmount = parseFloat(document.getElementById('loanAmount').value) || 0;
+            const annualRate = parseFloat(document.getElementById('annualRate').value) || 0;
+            const loanTerm = parseFloat(document.getElementById('loanTerm').value) || 0;
+
+            if (loanAmount <= 0 || annualRate <= 0 || loanTerm <= 0) return;
+
+            const numberOfPayments = loanTerm * 12;
+
+            // --- الحسبة المبسطة ---
+            const simpleAnnualInterest = loanAmount * (annualRate / 100);
+            const simpleTotalInterest = simpleAnnualInterest * loanTerm;
+            const simpleTotalAmount = loanAmount + simpleTotalInterest;
+            const simpleMonthlyPayment = simpleTotalAmount / numberOfPayments;
+
+            // --- الحسبة الدقيقة (المعقدة) ---
+            const monthlyRate = annualRate / 100 / 12;
+            const complexMonthlyPayment = (loanAmount * monthlyRate * Math.pow(1 + monthlyRate, numberOfPayments)) /
+                                          (Math.pow(1 + monthlyRate, numberOfPayments) - 1);
+            const complexTotalAmount = complexMonthlyPayment * numberOfPayments;
+            const complexTotalInterest = complexTotalAmount - loanAmount;
+
+
+            // تحديث النتائج
+            document.getElementById('monthlyPaymentSimple').textContent = formatNumber(Math.round(simpleMonthlyPayment));
+            document.getElementById('totalInterestSimple').textContent = formatNumber(Math.round(simpleTotalInterest));
+            
+            document.getElementById('complexMonthlyPayment').textContent = formatNumber(Math.round(complexMonthlyPayment));
+            document.getElementById('totalInterestComplex').textContent = formatNumber(Math.round(complexTotalInterest));
+            document.getElementById('totalAmountComplex').textContent = formatNumber(Math.round(complexTotalAmount));
+
+
+            // تحديث الملخص
+            document.getElementById('summaryLoanAmount').textContent = formatNumber(loanAmount);
+            document.getElementById('summaryRate').textContent = annualRate + '%';
+            document.getElementById('summaryTerm').textContent = loanTerm + ' سنة';
+            document.getElementById('summaryPayments').textContent = numberOfPayments + ' قسط';
+        }
+
+        function setLoanAmount(amount) {
+            document.getElementById('loanAmount').value = amount;
+            calculateMortgage();
+        }
+
+        function setAnnualRate(rate) {
+            document.getElementById('annualRate').value = rate;
+            calculateMortgage();
+        }
+
+        function setLoanTerm(term) {
+            document.getElementById('loanTerm').value = term;
+            calculateMortgage();
+        }
+
+        // حساب أولي عند تحميل الصفحة
+        window.addEventListener('load', function() {
+            calculateMortgage();
+        });
+    </script>
+</body>
+</html>
